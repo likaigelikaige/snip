@@ -151,3 +151,53 @@ for (auto m : models) {
 }
 
 viewer_->update();
+
+
+// 20220905
+SurfaceMesh *Planar_segment::borders_alpha_plus(float dd1, float dd2, const Plane3 *plane_lidar) {
+    const auto &pts = cloud_->points();
+    auto &plane = supporting_plane_;
+    const vec3 &pp = plane->point();
+    const vec3 &ppn = plane->normal();
+    const Plane_3* supporting_plane = new Plane_3(Point_3(pp.x, pp.y, pp.z), Vector_3(ppn.x, ppn.y, ppn.z));
+    auto &center = plane_center_;
+
+    std::vector<Point_3> points;
+    float  center_orient;
+    bool k1, k2, k3;
+
+    center_orient = plane_lidar->orient(center);
+
+    for (std::size_t i = 0; i < size(); ++i) {
+        std::size_t idx = at(i);
+        const vec3 &p = pts[idx];
+
+        k1 = plane->squared_distance(p) < dd1*dd1;
+        k2 = plane_lidar->squared_distance(p) > dd2*dd2;
+        k3 = plane_lidar->orient(p) * center_orient > 0;
+        if (k1 && k2 && k3) {
+            vec3 p_temp = plane->projection(p);
+            points.push_back(Point_3(p_temp.x, p_temp.y, p_temp.z));
+        }
+    }
+
+    float avg_spacing = 0.03;
+    Alpha_shape_mesh alpha_mesh(points.begin(), points.end(), *supporting_plane);
+
+    SurfaceMesh* covering_mesh = new SurfaceMesh;
+    // const std::string &name = "Plane_" +std::to_string(points.size()) + "_alpha_shape";
+    const std::string &name = "Plane_plus";
+    covering_mesh->set_name(name);
+
+    float radius = avg_spacing * float(5.0);
+    if (alpha_mesh.extract_mesh(radius * radius, *covering_mesh))
+        return covering_mesh ;
+    else {
+        delete covering_mesh;
+        return nullptr ;
+    }
+}
+
+SurfaceMesh *borders_alpha_plus(float dd1, float dd2, const Plane3 *plane_lidar);
+
+
