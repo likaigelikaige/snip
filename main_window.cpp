@@ -4108,7 +4108,6 @@ void MainWindow::show_onekey() {
             // viewer_->addModel(planes_updown[1].mesh);
             // updateUi();
 
-            std::vector<vec3> interpoint_v, interpoint_h;
             std::vector<Point_3>  cgal_points_h1;
             std::vector<Point_3>  cgal_points_h2;
             std::vector<Point_3>  cgal_points_v1;
@@ -4116,14 +4115,11 @@ void MainWindow::show_onekey() {
             
             Plane3* plane_v;
             Plane3* plane_h;
-            Plane3* plane_bottom;
-            Plane3* plane_top;
             Plane3* cgal_plane_left = nullptr;
             Plane3* cgal_plane_right = nullptr;
             Plane3* cgal_plane_centerv = nullptr;
             Plane3* cgal_plane_bottom = nullptr;
             Line3 line_h, line_v;
-            Line3 line_bottom, line_left, line_right, line_top;
             bool ok;
 
             plane_h = new Plane3(planes_updown[1].center, planes_leftri[size_leftri -1].plane->normal());
@@ -4137,10 +4133,7 @@ void MainWindow::show_onekey() {
             else
                 orient_h = false;
             orient_v = plane_v->orient(vec3(0, 0, 0)) ;
-                
-            std::vector<double> dist_h1, dist_h2;
-            std::vector<vec3> points_v1, points_v2, points_h1, points_h2;
-            std::vector<double> dist_v1, dist_v2;
+
 
             ok = planes_updown[1].plane->intersect(*plane_h, line_h);
             ok = planes_updown[1].plane->intersect(*plane_v, line_v);
@@ -4555,8 +4548,6 @@ void MainWindow::show_onekey() {
             // clean
             delete plane_v;
             delete plane_h;
-            delete plane_bottom;
-            delete plane_top;
 
         } else {
             LOG(WARNING) << "No truck!"; 
