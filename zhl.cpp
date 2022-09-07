@@ -204,6 +204,9 @@ SurfaceMesh *borders_alpha_plus(float dd1, float dd2, const Plane3 *plane_lidar)
 cgal_line_threshold: 0.1
 float cgal_line_threshold = params_["cgal_line_threshold"].As<float> ();
 
+alpha_spacing: 0.03
+
+
 std::vector<Point_3>::iterator it = cgal_points_h1.begin();
 while (it != cgal_points_h1.end()) {
     if (CGAL::squared_distance(*it, cgal_line_h1) > cgal_line_threshold * cgal_line_threshold)
@@ -238,4 +241,25 @@ while (it != cgal_points_v2.end()) {
 CGAL::linear_least_squares_fitting_3(cgal_points_v1.begin(), cgal_points_v1.end(), cgal_line_v1, CGAL::Dimension_tag<0>());
 CGAL::linear_least_squares_fitting_3(cgal_points_v2.begin(), cgal_points_v2.end(), cgal_line_v2, CGAL::Dimension_tag<0>());
 
+//
+        if (size_updown >=2 && size_topbot >=1) {
+        if (size_updown >=2 && size_topbot ==0 && size_leftri ==2) {
 
+cgal_plane_bottom -> distance_tail()
+
+when parallel find okk
+
+//with celang
+if (size_leftri == 2) {
+use_leftri: false
+
+
+if (size_leftri >=2)
+{
+    vec3 s(0, 0, 0);
+    vec3 t(10000, 0, 0);
+    vec3 p;
+    bool k = planes_leftri[0].plane->intersect(s, t, p); 
+    if (k)
+        std::swap(planes_leftri[0], planes_leftri[1]);
+}
