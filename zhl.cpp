@@ -200,4 +200,42 @@ SurfaceMesh *Planar_segment::borders_alpha_plus(float dd1, float dd2, const Plan
 
 SurfaceMesh *borders_alpha_plus(float dd1, float dd2, const Plane3 *plane_lidar);
 
+// 20220907
+cgal_line_threshold: 0.1
+float cgal_line_threshold = params_["cgal_line_threshold"].As<float> ();
+
+std::vector<Point_3>::iterator it = cgal_points_h1.begin();
+while (it != cgal_points_h1.end()) {
+    if (CGAL::squared_distance(*it, cgal_line_h1) > cgal_line_threshold * cgal_line_threshold)
+        it = cgal_points_h1.erase(it);
+    else
+        it++;
+}
+it = cgal_points_h2.begin();
+while (it != cgal_points_h2.end()) {
+    if (CGAL::squared_distance(*it, cgal_line_h2) > cgal_line_threshold * cgal_line_threshold)
+        it = cgal_points_h2.erase(it);
+    else
+        it++;
+}
+CGAL::linear_least_squares_fitting_3(cgal_points_h1.begin(), cgal_points_h1.end(), cgal_line_h1, CGAL::Dimension_tag<0>());
+CGAL::linear_least_squares_fitting_3(cgal_points_h2.begin(), cgal_points_h2.end(), cgal_line_h2, CGAL::Dimension_tag<0>());
+
+it = cgal_points_v1.begin();
+while (it != cgal_points_v1.end()) {
+    if (CGAL::squared_distance(*it, cgal_line_v1) > cgal_line_threshold * cgal_line_threshold)
+        it = cgal_points_v1.erase(it);
+    else
+        it++;
+}
+it = cgal_points_v2.begin();
+while (it != cgal_points_v2.end()) {
+    if (CGAL::squared_distance(*it, cgal_line_v2) > cgal_line_threshold * cgal_line_threshold)
+        it = cgal_points_v2.erase(it);
+    else
+        it++;
+}
+CGAL::linear_least_squares_fitting_3(cgal_points_v1.begin(), cgal_points_v1.end(), cgal_line_v1, CGAL::Dimension_tag<0>());
+CGAL::linear_least_squares_fitting_3(cgal_points_v2.begin(), cgal_points_v2.end(), cgal_line_v2, CGAL::Dimension_tag<0>());
+
 
