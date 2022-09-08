@@ -263,3 +263,40 @@ if (size_leftri >=2)
     if (k)
         std::swap(planes_leftri[0], planes_leftri[1]);
 }
+
+// 20220908
+use_intersect_line: true
+
+if (use_intersect_line) {
+    Line3 line_intersect_left;
+    Line3 line_intersect_right;
+    this_plane->intersect(*planes_leftri[0].plane, line_intersect_left);
+    this_plane->intersect(*planes_leftri[1].plane, line_intersect_right);
+
+    cgal_plane_left = new Plane3(line_intersect_left.point(), 
+                        cross(this_plane->normal(), line_intersect_left.direction()));
+    cgal_plane_right = new Plane3(line_intersect_right.point(), 
+                        cross(this_plane->normal(), line_intersect_right.direction()));
+
+} else {
+    cgal_plane_left = planes_leftri[0].plane;
+    cgal_plane_right = planes_leftri[1].plane;
+}
+
+auto &this_plane = planes_updown[1].plane;
+
+if (size_leftri == 2 && (use_leftri || use_intersect_line)) {
+    if (use_leftri) {
+        cgal_plane_left = planes_leftri[0].plane;
+        cgal_plane_right = planes_leftri[1].plane;
+    } else {
+        Line3 line_intersect_left;
+        Line3 line_intersect_right;
+        this_plane->intersect(*planes_leftri[0].plane, line_intersect_left);
+        this_plane->intersect(*planes_leftri[1].plane, line_intersect_right);
+
+        cgal_plane_left = new Plane3(line_intersect_left.point(), 
+                            cross(this_plane->normal(), line_intersect_left.direction()));
+        cgal_plane_right = new Plane3(line_intersect_right.point(), 
+                            cross(this_plane->normal(), line_intersect_right.direction()));
+    }
