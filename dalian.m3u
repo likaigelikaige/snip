@@ -1,0 +1,16 @@
+#EXTM3U
+#EXT-X-APP APTV
+#EXT-X-APTV-TYPE local
+
+#EXTINF:-1 group-title="大连",大连新闻
+http://httplive.slave.bfgd.com.cn:14311/playurl?playtype=live&protocol=http&accesstoken=R5F2408FEU3198804BK78052214IE73560DFP2BF4M340CE68V0Z339CBW1626D4D261E46FEA&playtoken=ABCDEFGH&programid=4200000273
+#EXTINF:-1 group-title="大连",大连新闻
+http://live.cooltv.top/tv/cutv.php?id=dlxwzh
+#EXTINF:-1 group-title="大连",大连新闻
+http://120.76.248.139/live/bfgd/4200000273.m3u8
+#EXTINF:-1 group-title="大连",大连新闻综合
+rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?t
+#EXTINF:-1 group-title="大连",大连新闻综合
+rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?p?zliaond
+#EXTINF:-1 group-title="大连",大连新闻综合
+rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?ts=1519461800&token=88626a4b44718a4c6819d36ad8fbc0c9
