@@ -19,3 +19,8 @@ rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?ts=1519461800&token=88626a4b
 http://[2409:8087:1414:22::112d]/wh7f454c46tw3498689980_663871177/hwottcdn.ln.chinamobile.com/PLTV/88888890/224/3221226721/index.m3u8
 #EXTINF:-1 group-title="央视",CCTV-13
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226316/1.m3u8?
+
+#EXTINF:-1 group-title="地方",辽宁卫视
+http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226966/1.m3u8?
+#EXTINF:-1 group-title="地方",辽宁卫视
+http://php.jdshipin.com/TVOD/hljyd.php?id=3221226546
