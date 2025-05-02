@@ -16,4 +16,4 @@ rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?p?zliaond
 rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?ts=1519461800&token=88626a4b44718a4c6819d36ad8fbc0c9
 
 #EXTINF:-1 group-title="大连",CCTV-13
-http://192.227.130.203:50001/TVOD/1000000002000021303/ystenlive/index.m3u8
+http://123.10.79.208:808/hls/13/index.m3u8
