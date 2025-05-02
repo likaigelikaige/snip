@@ -15,5 +15,5 @@ rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?p?zliaond
 #EXTINF:-1 group-title="大连",大连新闻综合
 rtmp://secret.dltv.cn/dreamStreamCore/tcb3IB5/lv500?ts=1519461800&token=88626a4b44718a4c6819d36ad8fbc0c9
 
-#EXTINF:-1 group-title="大连",CCTV-13
-http://123.10.79.208:808/hls/13/index.m3u8
+#EXTINF:-1 group-title="大连",CCTV-1
+http://[2409:8087:1414:22::112d]/wh7f454c46tw3498689980_663871177/hwottcdn.ln.chinamobile.com/PLTV/88888890/224/3221226721/index.m3u8
